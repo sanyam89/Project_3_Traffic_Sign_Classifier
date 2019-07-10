@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 ---
 ### Files Submited
    Submission Files can also be found at : https://github.com/sanyam89/Project_3_Traffic_Sign_Classifier
-
+   If the python file doesn't open, please try the following link: https://nbviewer.jupyter.org/github/sanyam89/Project_3_Traffic_Sign_Classifier/blob/master/Traffic_Sign_Classifier.ipynb
 ### Data Exploration
 ---
 Dataset Summary: 
