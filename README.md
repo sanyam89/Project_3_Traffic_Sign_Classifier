@@ -1,3 +1,4 @@
+
 ## Project: Build a Traffic Sign Recognition Program
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
@@ -10,6 +11,7 @@ The goals / steps of this project are the following:
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
+
 
 ### Here I will target the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.
 ---
@@ -25,10 +27,10 @@ Dataset Summary:
 * Number of classes/ traffic signs = 43
 
 Exploratory Visualization: Showing all 43 unique signs that will be used in this project to Identify different images of traffic signs
-![alt text](results/exploratory_visualization)
+![exploratory_visualization image](./results/exploratory_visualization.png)
 
 Below is the bar graph of the number of images available for the training image dataset per traffic sign.
-![alt text](results/training_dataset_count)
+![training_dataset_count image](./results/training_dataset_count.png)
 
 
 ## Design and Test a Model Architecture
@@ -43,7 +45,7 @@ I tried different preprocessing methods:
 The normalize 3() function gave me the best results as it improved the contrast even on the dull images.
     
 The comparison of the oritinal images, normalize1 (images) and normalize3 (images) is show below.
-![alt text](results/normalize)
+![normalize image](./results/normalize.png)
 
 #### Model Architecture
 	
@@ -75,7 +77,7 @@ With the initial CNN that we used in the Lenet Lab, it was had to differentiate 
 
 To address this, I tried to add the 1x1 convolution to extract more information from the Convolutional layer 1 but it didn't work as intended.
 
-Then I added more depth to the Convolution Layer 1 (from 6 to 24) and Layer 2 (from 16 to 64). By doing so the speed limit images of 30,50,70 were able to be classified correctly.
+Then I added more depth to the Convolution Layer 1 (from 6 to 24) and Layer 2 (from 16 to 64). By doing so the speed limit images of 30,50,70 were able to be classified correctly for the most part.
 
 I tried different combinations for:
 * EPOCHs(10-30)
@@ -94,22 +96,35 @@ Finally I was able to meet the target:
 * Test accuracy on test images = 93.1%
 * Test accuracy on new images = 71.4%
 
+
 ### Test a Model on Test images dataset and New Images
 
 #### Acquiring New Images
-The submission includes five new German Traffic signs found on the web, and the images are visualized. Discussion is made as to particular qualities of the images or traffic signs in the images that are of interest, such as whether they would be difficult for the model to classify.
-![alt text](results/New_acquired_images)
+I used 14 images of German traffic signs and a couple which were taken from different angles from the web. All the images are visualized below.
+There are 2 STOP signs from different angles, a 120kmph sign taken from below,  a 2-3 images which are in low light conditions and a 'general caution' sign that is half covered with snow. They should be difficult to identify as they are not very straightforward and sometimes might match with other signs given in the identifier dataset.
 
-#### Performance on Test  Images
-![alt text](results/Test_images_validation)
+![New_acquired_images image](./results/New_acquired_images.png)
 
-#### Performance on New Images
-The submission documents the performance of the model when tested on the captured images. The performance on the new images is compared to the accuracy results of the test set.
+#### Performance on Test  Images - Model Certainty - Softmax Probabilities
+To visualize my code performance I made a cell that chooses random images from the test data and evaluates those images and plots their top 5 softmax probabilities. As we can see in the image below, most of the images were identified correctly. The last image, 120 kmph with the sign tilted at 45 degree angle was identified correctly but probably because of the angle it showed some probability of other signs as well.
+
+* Test accuracy on test images was 93.1%
+
+![Test_images_validation image](./results/Test_images_validation.png)
+
+#### Performance on New Images - Model Certainty - Softmax Probabilities
+Then I performed the similar operation on the 14 new images that I obtained online. 
+
+* My code identified 10 out of 14 correctly
+* Test accuracy on new images was 71.4%
+
+Some of the images that were not identified correctly could be because of the smaller image size, minute detials from the images were lost while resizing.
+The model performance could be improved further if it can be specifically trained to identify the numbers and digits more effectively.
+
+![New_images_validation image](./results/New_images_validation.png)
 
 
-#### Model Certainty - Softmax Probabilities
-The top five softmax probabilities of the predictions on the captured images are outputted. The submission discusses how certain or uncertain the model is of its predictions.
 
-#### Visualizations of the Softmax Probabilities
-For each of the five new images, create a graphic visualization of the soft-max probabilities. Bar charts might work well.
-![alt text](results/New_images_validation)
+```python
+
+```
